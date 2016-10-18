@@ -1,4 +1,4 @@
-FROM daocloud.io/library/maven:3.2.3-jdk-8u40
+FROM daocloud.io/library/maven:3.2.3-jdk-8
 
 RUN wget -O /tmp/apache-tomcat-8.0.5.tar.gz http://archive.apache.org/dist/tomcat/tomcat-8/v8.0.5/bin/apache-tomcat-8.0.5.tar.gz
 RUN cd /usr/local && tar xzf /tmp/apache-tomcat-8.0.5.tar.gz
