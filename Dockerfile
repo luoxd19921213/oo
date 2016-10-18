@@ -13,7 +13,7 @@ RUN chmod a+x /usr/local/start-everything.sh
 ADD pom.xml /tmp/build/
 RUN cd /tmp/build && /usr/local/maven/bin/mvn -q dependency:resolve
 
-ENV JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
+ENV JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk-amd64/
 ENV CATALINA_HOME /usr/local/tomcat
 
 ADD src /tmp/build/src
