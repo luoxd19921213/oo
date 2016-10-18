@@ -5,7 +5,6 @@ RUN cd /usr/local && tar xzf /tmp/apache-tomcat-8.0.5.tar.gz
 RUN ln -s /usr/local/apache-tomcat-8.0.5 /usr/local/tomcat
 RUN rm /tmp/apache-tomcat-8.0.5.tar.gz
 
-# Copy start script
 ADD start-everything.sh /usr/local/
 RUN chmod a+x /usr/local/start-everything.sh
 
