@@ -14,7 +14,7 @@ test:
 
     script:
         - cd SpringMaven
-				- mvn install -q -DskipTests=true
+        - mvn install -q -DskipTests=true
         - mvn test
 
 build:
