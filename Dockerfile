@@ -1,24 +1,22 @@
-FROM daocloud.io/library/tomcat:8.0.15-jre8
+FROM daocloud.io/library/maven:3.2.3-jdk-8u40
 
-# Download Maven
-RUN wget -O /tmp/apache-maven-3.1.1-bin.tar.gz http://ftp.jaist.ac.jp/pub/apache/maven/maven-3/3.1.1/binaries/apache-maven-3.1.1-bin.tar.gz
-RUN cd /usr/local && tar xzf /tmp/apache-maven-3.1.1-bin.tar.gz
-RUN ln -s /usr/local/apache-maven-3.1.1 /usr/local/maven
-RUN rm /tmp/apache-maven-3.1.1-bin.tar.gz
+RUN wget -O /tmp/apache-tomcat-8.0.5.tar.gz http://archive.apache.org/dist/tomcat/tomcat-8/v8.0.5/bin/apache-tomcat-8.0.5.tar.gz
+RUN cd /usr/local && tar xzf /tmp/apache-tomcat-8.0.5.tar.gz
+RUN ln -s /usr/local/apache-tomcat-8.0.5 /usr/local/tomcat
+RUN rm /tmp/apache-tomcat-8.0.5.tar.gz
 
 # Copy start script
 ADD start-everything.sh /usr/local/
 RUN chmod a+x /usr/local/start-everything.sh
 
 ADD pom.xml /tmp/build/
-RUN cd /tmp/build && /usr/local/maven/bin/mvn -q dependency:resolve
+RUN cd /tmp/build && mvn -q dependency:resolve
 
-ENV JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk-amd64/
 ENV CATALINA_HOME /usr/local/tomcat
 
 ADD src /tmp/build/src
         
-RUN cd /tmp/build && /usr/local/maven/bin/mvn -q -DskipTests=true package \
+RUN cd /tmp/build && mvn -q -DskipTests=true package \
 				&& rm -rf $CATALINA_HOME/webapps/* \
         && mv target/*.war $CATALINA_HOME/webapps/ROOT.war \
         && cd / && rm -rf /tmp/build
