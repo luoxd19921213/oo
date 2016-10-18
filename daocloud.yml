@@ -1,23 +1,20 @@
 version: "2.0"
 
 test:
-    image: daocloud/ci-java:oraclejdk8
+    image: maven:3.2.3-jdk-8
 
     services:
         - mysql
     env:
 
     install:
-        - wget -O /tmp/apache-maven-3.1.1-bin.tar.gz http://ftp.jaist.ac.jp/pub/apache/maven/maven-3/3.1.1/binaries/apache-maven-3.1.1-bin.tar.gz
-        - cd /usr/local && tar xzf /tmp/apache-maven-3.1.1-bin.tar.gz
-        - ln -s /usr/local/apache-maven-3.1.1 /usr/local/maven
-        - rm /tmp/apache-maven-3.1.1-bin.tar.gz
+     
     before_script:	
         - echo "Setup"
 
     script:
-        - /usr/local/maven/bin/mvn install -q -DskipTests=true
-        - /usr/local/maven/bin/mvn test
+        - mvn install -q -DskipTests=true
+        - mvn test
 
 build:
   image:
