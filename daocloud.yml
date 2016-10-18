@@ -4,11 +4,8 @@ test:
     image: daocloud/ci-java:oraclejdk8
 
     services:
-    
+        - mysql
     env:
-
-    external_links:
-        - FF_db_1:mysql
 
     install:
         - wget -O /tmp/apache-maven-3.1.1-bin.tar.gz http://ftp.jaist.ac.jp/pub/apache/maven/maven-3/3.1.1/binaries/apache-maven-3.1.1-bin.tar.gz
