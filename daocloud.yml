@@ -13,7 +13,6 @@ test:
         - echo "Setup"
 
     script:
-        - cd SpringMaven
         - mvn install -q -DskipTests=true
         - mvn test
 
