@@ -6,9 +6,12 @@ test:
     services:
         - mysql
     env:
-        - MYSQL_USERNAME="root"
-        - MYSQL_PASSWORD="root"
-        - MYSQL_INSTANCE_NAME="test"
+        - MYSQL_PORT = tcp://1.2.3.4:3306
+        - MYSQL_PORT_3306_TCP_ADDR = 1.2.3.4
+        - MYSQL_PORT_3306_TCP = tcp://1.2.3.4:3306
+        - MYSQL_PORT_3306_TCP_PROTO = tcp
+        - MYSQL_PORT_3306_TCP_PORT = 3306
+				- MYSQL_ROOT_PASSWORD=root
 
     install:
         - wget -O /tmp/apache-maven-3.1.1-bin.tar.gz http://ftp.jaist.ac.jp/pub/apache/maven/maven-3/3.1.1/binaries/apache-maven-3.1.1-bin.tar.gz
