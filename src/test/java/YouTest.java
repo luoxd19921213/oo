@@ -20,8 +20,8 @@ public class YouTest {
 	
 	@Test
 	public void test() {
-//		String mm = accessService.findbyId(1);
-//		System.err.println(mm);
+		String mm = accessService.findbyId(1);
+		System.err.println(mm);
 	}
 
 }
