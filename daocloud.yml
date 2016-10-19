@@ -4,7 +4,6 @@ test:
     image: daocloud/ci-java:oraclejdk8
 
     services:
-		    #相当于是把一个link到一个mysql的容器 mysql是访问的别名
         - mysql
     env:
 
@@ -18,7 +17,6 @@ test:
         - echo "Setup"
 
     script:
-		    #修改数据库密码 并初始化数据库   -h mysql是连接是主机名
         - mysqladmin -h mysql -u root password root
         - mysql -u root -proot -h mysql -e 'create database if not exists test'
         - mysql -u root -proot -h mysql test < test.sql
