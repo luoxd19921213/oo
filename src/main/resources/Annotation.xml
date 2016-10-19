@@ -8,7 +8,7 @@
 	<bean id="dataSource" class="com.mysql.jdbc.jdbc2.optional.MysqlDataSource">
 		<property name="url" value="jdbc:mysql://mysql:3306/test?characterEncoding\=utf-8" />
 		<property name="user" value="root"/>
-		<property name="password" value="root"/>
+		<property name="password" value=""/>
 	</bean>
 	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
