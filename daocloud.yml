@@ -1,13 +1,17 @@
 version: "2.0"
 
 test:
-    image: maven:3.2.3-jdk-8
+    image: daocloud/ci-java:oraclejdk8
 
     services:
         - mysql
     env:
 
     install:
+        - wget -O /tmp/apache-maven-3.1.1-bin.tar.gz http://ftp.jaist.ac.jp/pub/apache/maven/maven-3/3.1.1/binaries/apache-maven-3.1.1-bin.tar.gz
+        - cd /usr/local && tar xzf /tmp/apache-maven-3.1.1-bin.tar.gz
+        - ln -s /usr/local/apache-maven-3.1.1 /usr/local/maven
+        - rm /tmp/apache-maven-3.1.1-bin.tar.gz
      
     before_script:	
         - echo "Setup"
@@ -15,8 +19,8 @@ test:
     script:
         - mysql -u root -h mysql -e 'create database if not exists test'
         - mysql -u root -h mysql databaseName < test.sql
-        - mvn install -q -DskipTests=true
-        - mvn test
+        - /usr/local/maven/bin/mvn install -q -DskipTests=true
+        - /usr/local/maven/bin/mvn test
 
 build:
   image:
