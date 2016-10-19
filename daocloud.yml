@@ -17,9 +17,9 @@ test:
         - echo "Setup"
 
     script:
-        - mysqladmin -h mysql -uroot password "root"
-        - mysql -u root -h mysql -e 'create database if not exists test'
-        - mysql -u root -h mysql test < test.sql
+        - mysqladmin -h mysql -uroot password root
+        - mysql -u root -p root -h mysql -e 'create database if not exists test'
+        - mysql -u root -p root -h mysql test < test.sql
         - /usr/local/maven/bin/mvn install -q -DskipTests=true
         - /usr/local/maven/bin/mvn test
 
