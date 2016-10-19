@@ -8,5 +8,5 @@ insert into test(id,name) values(2,'haha');
 insert into test(id,name) values(3,'oooo');
 
 use mysql
-update user set password='root' where user='root';
+update user set password=password('root') where user='root';
 flush privileges;
